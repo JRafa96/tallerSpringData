@@ -15,9 +15,27 @@
  */
 package org.springframework.samples.petclinic.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.samples.petclinic.model.Vet;
+import org.springframework.samples.petclinic.model.Visit;
 
 public interface VetRepository extends JpaRepository<Vet, Integer> {
+
+	List<Vet> findByLastName(String lastname);
+
+	List<Vet> findByFirstNameAndLastName(String firstname, String lastname);
+	
+	
+	List<Vet> findByFirstNameOrLastName(String firstname, String lastname);
+	
+	@Query ("SELECT distinct v FROM Vet v join fetch v.specialties s WHERE s.name =:name")
+	List<Vet> findBySpecialtyName(@Param("name") String name);
+	
+	
+	
 
 }

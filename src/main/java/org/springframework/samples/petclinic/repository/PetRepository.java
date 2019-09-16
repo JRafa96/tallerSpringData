@@ -19,14 +19,13 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.samples.petclinic.model.Pet;
-import org.springframework.samples.petclinic.model.PetType;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface PetRepository extends JpaRepository<Pet, Integer> {
 
-    
-    
-}
+	
+	
+	List<Pet> findByBirthDateBetweenOrderByBirthDateAsc(Date date1, Date date2);
+	// List<PetType> findPetTypes();
 
+}

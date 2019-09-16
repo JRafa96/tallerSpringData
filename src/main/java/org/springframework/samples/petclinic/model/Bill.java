@@ -60,15 +60,12 @@ public class Bill extends BaseEntity {
 	public void setMoney(double money) {
 		this.money = money;
 	}
-	
-	@OneToOne(fetch = FetchType.EAGER, mappedBy = "bill", cascade = CascadeType.ALL)
-	private Visit visit;
-
-	public Visit getVisit() {
-		return visit;
-	}
-
-	public void setVisit(Visit visit) {
-		this.visit = visit;
-	}
+	/*
+	 * @OneToOne(fetch = FetchType.EAGER, mappedBy = "bill", cascade =
+	 * CascadeType.ALL) private Visit visit;
+	 * 
+	 * public Visit getVisit() { return visit; }
+	 * 
+	 * public void setVisit(Visit visit) { this.visit = visit; }
+	 */
 }
