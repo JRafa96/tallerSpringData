@@ -21,6 +21,13 @@ CREATE TABLE IF NOT EXISTS specialties (
   INDEX(name)
 ) engine=InnoDB;
 
+CREATE TABLE IF NOT EXISTS facturas (
+  id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_number INT(10) unsigned NOT NULL,
+  payment_date date,
+  money double(5,2)
+) engine=InnoDB;
+
 CREATE TABLE IF NOT EXISTS vet_specialties (
   vet_id INT(4) UNSIGNED NOT NULL,
   specialty_id INT(4) UNSIGNED NOT NULL,
