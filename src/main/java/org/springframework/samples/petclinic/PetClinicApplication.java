@@ -50,6 +50,9 @@ import org.springframework.samples.petclinic.model.Visit;
 public class PetClinicApplication {
 	@Autowired
 	VetRepository vetRepository;
+	
+	@Autowired
+	VisitRepository visitRepository;
 
 	private static final Logger log = LoggerFactory.getLogger(PetClinicApplication.class);
 
