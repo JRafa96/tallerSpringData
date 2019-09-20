@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.samples.petclinic.model.Offer;
 import org.springframework.samples.petclinic.service.OfferService;
+import org.springframework.samples.petclinic.system.OrderNullException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,25 +35,28 @@ public class OfferController {
 		return offerService.findAll();
 	}
 
+
 	@RequestMapping(value = "/findOne/{id}", method = RequestMethod.GET)
-	public @ResponseBody Offer findOneById(@PathVariable Integer id) {
+	public @ResponseBody Offer findOneById(@PathVariable Integer id) throws OrderNullException {
 		return offerService.findById(id);
 	}
+	
 
 	@RequestMapping(value = "/updateOffer", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void updateOffer(@RequestBody Offer offer) {
+	public void updateOffer(@RequestBody Offer offer) throws Exception {
 		offerService.alterExpireDate(offer.getId(), offer.getExpireDate());
 	}
 
+	
 	@RequestMapping(value = "/deleteOffer", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public void deleteOffer(@RequestBody Offer offer) {
+	public void deleteOffer(@RequestBody Offer offer) throws OrderNullException {
 		offerService.deleteOffer(offer.getId());
 	}
 
 	@RequestMapping(value = "/findActiveOffers", method = RequestMethod.GET)
-	public @ResponseBody List<Offer> findByExpireDateGreaterThan() {
+	public @ResponseBody List<Offer> findByExpireDateGreaterThan() throws Exception {
 		return offerService.findByExpireDateGreaterThan(new Date());
 	}
 

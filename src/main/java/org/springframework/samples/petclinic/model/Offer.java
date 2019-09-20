@@ -10,6 +10,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -17,6 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Offer extends BaseEntity {
 
 	@Column(name = "title")
+	@NotEmpty
 	private String title;
 
 	@Column(name = "description")

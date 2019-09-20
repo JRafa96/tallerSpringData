@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.samples.petclinic.model.Offer;
+import org.springframework.samples.petclinic.system.DateInvalidException;
+import org.springframework.samples.petclinic.system.OrderNullException;
 
 public interface OfferService {
 
@@ -11,15 +13,15 @@ public interface OfferService {
 	
 	Offer createOffer(Offer offer);
 	
-	Offer findById(Integer id);
+	Offer findById(Integer id) throws OrderNullException ;
 	
 	List<Offer> findAll();
 	
-	void alterExpireDate(Integer id, Date expireDate);
+	void alterExpireDate(Integer id, Date expireDate) throws Exception;
 	
-	void deleteOffer(Integer id);
+	void deleteOffer(Integer id) throws OrderNullException;
 	
-	List<Offer> findByExpireDateGreaterThan(Date date);
+	List<Offer> findByExpireDateGreaterThan(Date date) throws Exception;
 	
 	
 }
