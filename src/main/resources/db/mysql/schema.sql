@@ -28,6 +28,17 @@ CREATE TABLE IF NOT EXISTS facturas (
   money double(5,2)
 ) engine=InnoDB;
 
+
+CREATE TABLE IF NOT EXISTS offers (
+  id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255),
+  description VARCHAR(255),
+  discount DOUBLE(5,2) NOT NULL,
+  expire_date DATE
+) engine=InnoDB;
+
+
+
 CREATE TABLE IF NOT EXISTS vet_specialties (
   vet_id INT(4) UNSIGNED NOT NULL,
   specialty_id INT(4) UNSIGNED NOT NULL,

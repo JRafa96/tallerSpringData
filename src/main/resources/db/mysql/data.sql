@@ -15,6 +15,11 @@ INSERT IGNORE INTO vet_specialties VALUES (3, 3);
 INSERT IGNORE INTO vet_specialties VALUES (4, 2);
 INSERT IGNORE INTO vet_specialties VALUES (5, 1);
 
+INSERT IGNORE INTO offers VALUES (null, 'Solidario', 'Oferta de dinheiro', 0.5,'2010-03-04');
+INSERT IGNORE INTO offers VALUES (null, 'Adoção', 'Oferta de animal', 0.5, '2011-03-04');
+INSERT IGNORE INTO offers VALUES (null, 'Comida','Oferta de comida', 0.5, '2020-06-04');
+INSERT IGNORE INTO offers VALUES (null, 'Tijela','Oferta de tijela', 0.5, '2021-09-04');
+
 INSERT IGNORE INTO types VALUES (1, 'cat');
 INSERT IGNORE INTO types VALUES (2, 'dog');
 INSERT IGNORE INTO types VALUES (3, 'lizard');
