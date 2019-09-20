@@ -3,6 +3,8 @@ package org.springframework.samples.petclinic.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.samples.petclinic.model.Offer;
@@ -25,7 +27,7 @@ public class OfferController {
 	private OfferService offerService;
 
 	@RequestMapping(value = "/createOffer", method = RequestMethod.POST)
-	public @ResponseBody Offer createOffer(@RequestBody Offer newOffer) {
+	public @ResponseBody Offer createOffer(@Valid @RequestBody Offer newOffer) {
 		return offerService.createOffer(newOffer);
 
 	}
@@ -44,14 +46,14 @@ public class OfferController {
 
 	@RequestMapping(value = "/updateOffer", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void updateOffer(@RequestBody Offer offer) throws Exception {
+	public void updateOffer(@Valid @RequestBody Offer offer) throws Exception {
 		offerService.alterExpireDate(offer.getId(), offer.getExpireDate());
 	}
 
 	
 	@RequestMapping(value = "/deleteOffer", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public void deleteOffer(@RequestBody Offer offer) throws OrderNullException {
+	public void deleteOffer(@Valid @RequestBody Offer offer) throws OrderNullException {
 		offerService.deleteOffer(offer.getId());
 	}
 
