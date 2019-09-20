@@ -33,24 +33,24 @@ public class OfferController {
 		return offerService.findAll();
 	}
 
-	@RequestMapping(value = "/findOnde/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/findOne/{id}", method = RequestMethod.GET)
 	public @ResponseBody Offer findOneById(@PathVariable Integer id) {
 		return offerService.findById(id);
 	}
 
-	@RequestMapping(value = "/updateOffer/{id}/{expireDate}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/updateOffer", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public @ResponseBody void updateOffer(@PathVariable("id") Integer id, @PathVariable("expireDate") Date expireDate) {
-		offerService.alterExpireDate(id, expireDate);
+	public void updateOffer(@RequestBody Offer offer) {
+		offerService.alterExpireDate(offer.getId(), offer.getExpireDate());
 	}
 
-	@RequestMapping(value = "/deleteOfffer/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteOffer", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody void deleteOffer(@PathVariable Integer id) {
-		offerService.deleteOffer(id);
+	public void deleteOffer(@RequestBody Offer offer) {
+		offerService.deleteOffer(offer.getId());
 	}
 
-	@RequestMapping(value = "/findActiveOffers/", method = RequestMethod.GET)
+	@RequestMapping(value = "/findActiveOffers", method = RequestMethod.GET)
 	public @ResponseBody List<Offer> findByExpireDateGreaterThan() {
 		return offerService.findByExpireDateGreaterThan(new Date());
 	}

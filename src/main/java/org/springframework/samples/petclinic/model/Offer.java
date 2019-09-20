@@ -68,4 +68,14 @@ public class Offer extends BaseEntity {
 
 	}
 
+	public Offer(String title, String description, double discount, Date expireDate) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.discount = discount;
+		this.expireDate = expireDate;
+	}
+
+	
+	
 }
