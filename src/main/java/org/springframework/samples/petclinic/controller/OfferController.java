@@ -26,8 +26,15 @@ public class OfferController {
 	@Autowired
 	private OfferService offerService;
 
+	@RequestMapping(value = "/saveOffer", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public @ResponseBody void saveOffer( @RequestBody Offer newOffer) {
+		offerService.createOffer(newOffer);
+
+	}
+
 	@RequestMapping(value = "/createOffer", method = RequestMethod.POST)
-	public @ResponseBody Offer createOffer(@Valid @RequestBody Offer newOffer) {
+	public @ResponseBody Offer createOffer( @RequestBody Offer newOffer) {
 		return offerService.createOffer(newOffer);
 
 	}
@@ -37,23 +44,20 @@ public class OfferController {
 		return offerService.findAll();
 	}
 
-
 	@RequestMapping(value = "/findOne/{id}", method = RequestMethod.GET)
 	public @ResponseBody Offer findOneById(@PathVariable Integer id) throws OrderNullException {
 		return offerService.findById(id);
 	}
-	
 
 	@RequestMapping(value = "/updateOffer", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void updateOffer(@Valid @RequestBody Offer offer) throws Exception {
+	public void updateOffer( @RequestBody Offer offer) throws Exception {
 		offerService.alterExpireDate(offer.getId(), offer.getExpireDate());
 	}
 
-	
 	@RequestMapping(value = "/deleteOffer", method = RequestMethod.DELETE)
 	@ResponseStatus(HttpStatus.OK)
-	public void deleteOffer(@Valid @RequestBody Offer offer) throws OrderNullException {
+	public void deleteOffer(@RequestBody Offer offer) throws OrderNullException {
 		offerService.deleteOffer(offer.getId());
 	}
 
